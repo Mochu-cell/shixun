@@ -1,0 +1,4 @@
+tumor_type,count,percentage
+glioma,1112,24.8
+meningioma,1142,25.5
+pituitary,1119,25.0

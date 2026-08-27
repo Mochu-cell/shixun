@@ -1,0 +1,24 @@
+# 本地敏感配置（不入库，含真实密码/IP）
+config/local_config.py
+config/vm.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 运行时产物与缓存
+*.db
+*.cache
+.mplconfig/
+scripts/medical/analysis/sample_data/
+web/detection/static/uploads/
+web/detection/static/results/
+
+# IDE / 系统
+.idea/
+.vscode/
+Thumbs.db
+.DS_Store

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>脑肿瘤智能检测系统</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>🧠 脑肿瘤智能检测系统</h1>
+            <p class="subtitle">基于YOLOv11深度学习模型 | MRI影像智能分析</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- 系统状态 -->
+        <section class="status-section">
+            <div class="status-card">
+                <div class="status-item">
+                    <span class="status-label">模型状态</span>
+                    <span class="status-value {% if model_info.loaded %}success{% else %}error{% endif %}">
+                        {% if model_info.loaded %}✅ 已加载{% else %}❌ 未加载{% endif %}
+                    </span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">检测类别</span>
+                    <span class="status-value">胶质瘤 / 脑膜瘤 / 垂体瘤 / 正常</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 图像上传 -->
+        <section class="upload-section">
+            <h2>上传MRI图像</h2>
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">📁</div>
+                <p>点击或拖拽上传MRI图像</p>
+                <p class="upload-hint">支持 PNG / JPG / JPEG / BMP 格式</p>
+                <input type="file" id="fileInput" accept="image/*" hidden>
+            </div>
+            
+            <div class="preview-container" id="previewContainer" style="display: none;">
+                <div class="preview-item">
+                    <h3>原始图像</h3>
+                    <img id="originalImage" src="" alt="原始图像">
+                </div>
+                <div class="preview-item">
+                    <h3>检测结果</h3>
+                    <img id="resultImage" src="" alt="检测结果">
+                </div>
+            </div>
+        </section>
+
+        <!-- 检测结果 -->
+        <section class="result-section" id="resultSection" style="display: none;">
+            <h2>检测结果</h2>
+            <div class="result-summary">
+                <div class="summary-item">
+                    <span class="summary-label">检测数量</span>
+                    <span class="summary-value" id="detectionCount">0</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">平均置信度</span>
+                    <span class="summary-value" id="avgConfidence">0%</span>
+                </div>
+            </div>
+            
+            <div class="detection-list" id="detectionList">
+                <!-- 检测结果将在这里动态生成 -->
+            </div>
+        </section>
+
+        <!-- 检测历史 -->
+        <section class="history-section">
+            <h2>检测历史</h2>
+            <div class="history-list" id="historyList">
+                <p class="loading">加载中...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>医疗大数据与脑肿瘤影像智能检测系统</p>
+        <p>基于YOLOv11 + Flask + OpenCV</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

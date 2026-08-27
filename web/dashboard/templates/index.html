@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>医保数据分析可视化仪表盘</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- 页面标题 -->
+        <header class="header">
+            <h1>医保数据分析可视化仪表盘</h1>
+            <div class="header-info">
+                <span class="date-info">数据日期: 2024-06</span>
+                <span class="update-time">更新时间: <span id="update-time">-</span></span>
+            </div>
+        </header>
+        
+        <!-- KPI卡片区域 -->
+        <section class="kpi-section">
+            <div class="kpi-card">
+                <div class="kpi-icon money-icon"></div>
+                <div class="kpi-content">
+                    <div class="kpi-title">总费用</div>
+                    <div class="kpi-value" id="kpi-total-amount">-</div>
+                    <div class="kpi-unit">元</div>
+                </div>
+            </div>
+            
+            <div class="kpi-card">
+                <div class="kpi-icon visit-icon"></div>
+                <div class="kpi-content">
+                    <div class="kpi-title">总就诊量</div>
+                    <div class="kpi-value" id="kpi-visit-count">-</div>
+                    <div class="kpi-unit">次</div>
+                </div>
+            </div>
+            
+            <div class="kpi-card">
+                <div class="kpi-icon warning-icon"></div>
+                <div class="kpi-content">
+                    <div class="kpi-title">异常预警KPI</div>
+                    <div class="kpi-value" id="kpi-abnormal-count">-</div>
+                    <div class="kpi-unit">人</div>
+                </div>
+            </div>
+            
+            <div class="kpi-card">
+                <div class="kpi-icon" style="background:linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);"></div>
+                <div class="kpi-content">
+                    <div class="kpi-title">高风险人数KPI</div>
+                    <div class="kpi-value" id="kpi-high-risk-count">-</div>
+                    <div class="kpi-unit">人</div>
+                </div>
+            </div>
+            
+            <div class="kpi-card">
+                <div class="kpi-icon rate-icon"></div>
+                <div class="kpi-content">
+                    <div class="kpi-title">平均报销率</div>
+                    <div class="kpi-value" id="kpi-reimburse-rate">-</div>
+                    <div class="kpi-unit">%</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 图表区域第一行 -->
+        <section class="charts-row">
+            <div class="chart-container">
+                <div class="chart-title">月度费用趋势</div>
+                <div class="chart-box" id="chart-monthly"></div>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-title">参保类型费用对比</div>
+                <div class="chart-box" id="chart-type"></div>
+            </div>
+        </section>
+        
+        <!-- 图表区域第二行 -->
+        <section class="charts-row">
+            <div class="chart-container">
+                <div class="chart-title">费用结构占比</div>
+                <div class="chart-box" id="chart-pie"></div>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-title">医院-科室费用分布</div>
+                <div class="chart-box" id="chart-heatmap"></div>
+            </div>
+        </section>
+        
+        <!-- 图表区域第三行 -->
+        <section class="charts-row">
+            <div class="chart-container wide">
+                <div class="chart-title">年龄段费用分布</div>
+                <div class="chart-box" id="chart-age"></div>
+            </div>
+        </section>
+        
+        <!-- 高风险人员名单报表 -->
+        <section class="report-section">
+            <div class="section-title">
+                <span class="title-text">高风险人员名单报表</span>
+                <span class="title-badge" id="high-risk-total">0条</span>
+            </div>
+            <table class="abnormal-table" id="high-risk-table">
+                <thead>
+                    <tr>
+                        <th>人员ID</th>
+                        <th>姓名</th>
+                        <th>年龄段</th>
+                        <th>异常类型</th>
+                        <th>异常金额(元)</th>
+                        <th>检测日期</th>
+                        <th>异常说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="7" class="loading-text">加载中...</td></tr>
+                </tbody>
+            </table>
+            <div class="pagination" id="high-risk-pagination" style="margin-top:10px;text-align:right;">
+                <button class="page-btn" id="btn-prev" onclick="loadHighRiskPage(currentPage-1)">上一页</button>
+                <span class="page-info" id="page-info">第1页</span>
+                <button class="page-btn" id="btn-next" onclick="loadHighRiskPage(currentPage+1)">下一页</button>
+            </div>
+        </section>
+        
+        <!-- 次均费用趋势图 -->
+        <section class="charts-row">
+            <div class="chart-container wide">
+                <div class="chart-title">次均费用趋势</div>
+                <div class="chart-box" id="chart-avg-cost"></div>
+            </div>
+        </section>
+        
+        <!-- 页脚 -->
+        <footer class="footer">
+            <div class="footer-info">
+                医疗医保大数据分析系统 | 医保数据智能分析
+            </div>
+        </footer>
+    </div>
+    
+    <script src="/static/js/dashboard.js"></script>
+</body>
+</html>

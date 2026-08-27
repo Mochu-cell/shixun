@@ -1,0 +1,4 @@
+confidence_range,count,percentage
+high_90_100,99,100.0
+medium_70_90,0,0.0
+low_50_70,0,0.0

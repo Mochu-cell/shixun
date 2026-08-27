@@ -1,0 +1,11 @@
+names:
+- glioma
+- meningioma
+- notumor
+- pituitary
+nc: 4
+# 相对路径：在 models/brain_tumor_detection 目录下运行训练脚本时自动解析
+path: data/brain_tumor_yolo
+test: images/test
+train: images/train
+val: images/val

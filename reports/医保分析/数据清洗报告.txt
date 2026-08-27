@@ -1,0 +1,37 @@
+============================================================
+  医保数据清洗报告
+  生成时间: 2026-07-03 17:29:05
+============================================================
+
+[insurance_info_clean.csv]
+  行数: 5050  |  列数: 12
+  列名: person_id, name, gender, age, id_card, insurance_type, region, register_date, status, name_mask, id_card_mask, person_id_mask
+  文件大小: 573.1 KB
+  路径: /home/hadoop/data_clean/output/insurance_info_clean.csv
+
+[medical_record_clean.csv]
+  行数: 9871  |  列数: 10
+  列名: record_id, person_id, visit_date, hospital, department, diagnosis, doctor, visit_type, person_id_mask, doctor_mask
+  文件大小: 1026.8 KB
+  路径: /home/hadoop/data_clean/output/medical_record_clean.csv
+
+[expense_detail_clean.csv]
+  行数: 15323  |  列数: 11
+  列名: detail_id, record_id, item_name, item_category, quantity, unit_price, total_amount, reimbursable, reimbursed_amount, self_paid_amount, record_id_mask
+  文件大小: 1232.2 KB
+  路径: /home/hadoop/data_clean/output/expense_detail_clean.csv
+
+----------------------------------------
+[数据质量汇总]
+  insurance_info:    5050 行 (原始 5050)
+  medical_record:    9871 行 (原始 9871)
+  expense_detail:   15323 行 (原始 15323)
+
+[脱敏说明]
+  姓名:  保留姓, 名用*替代 (如 张**)
+  身份证: 保留前4后4位, 中间**** (如 4101****1234)
+  人员ID: 保留前5后1位, 中间**** (如 P2023****1)
+  医生:  保留姓, 名用**替代 (如 陈**)
+  金额:  四舍五入到整数
+  就诊ID: 保留前6位+****
+============================================================

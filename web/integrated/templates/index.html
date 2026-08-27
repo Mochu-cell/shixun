@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>医疗大数据与脑肿瘤影像智能检测系统</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>医疗大数据与脑肿瘤影像智能检测系统</h1>
+        <p>医疗大数据与脑肿瘤影像智能检测系统</p>
+    </header>
+
+    <main>
+        <!-- KPI卡片 -->
+        <section class="kpi-section">
+            <h2>核心指标</h2>
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-icon">👥</div>
+                    <div class="kpi-value" id="total_persons">-</div>
+                    <div class="kpi-label">参保人员</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon">💰</div>
+                    <div class="kpi-value" id="total_cost">-</div>
+                    <div class="kpi-label">医保总支出(万元)</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon">📊</div>
+                    <div class="kpi-value" id="reimburse_rate">-</div>
+                    <div class="kpi-label">报销比例</div>
+                </div>
+                <div class="kpi-card tumor">
+                    <div class="kpi-icon">🧠</div>
+                    <div class="kpi-value" id="total_detections">-</div>
+                    <div class="kpi-label">脑肿瘤检测次数</div>
+                </div>
+                <div class="kpi-card tumor">
+                    <div class="kpi-icon">⚠️</div>
+                    <div class="kpi-value" id="tumor_detected">-</div>
+                    <div class="kpi-label">检出肿瘤数</div>
+                </div>
+                <div class="kpi-card tumor">
+                    <div class="kpi-icon">📈</div>
+                    <div class="kpi-value" id="positive_rate">-</div>
+                    <div class="kpi-label">阳性率</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 图表区域 -->
+        <section class="charts-section">
+            <div class="chart-row">
+                <div class="chart-container">
+                    <h3>月度费用趋势</h3>
+                    <div id="monthly_chart" class="chart"></div>
+                </div>
+                <div class="chart-container">
+                    <h3>肿瘤类型分布</h3>
+                    <div id="tumor_type_chart" class="chart"></div>
+                </div>
+            </div>
+            <div class="chart-row">
+                <div class="chart-container">
+                    <h3>检测趋势</h3>
+                    <div id="detection_trend_chart" class="chart"></div>
+                </div>
+                <div class="chart-container">
+                    <h3>置信度分布</h3>
+                    <div id="confidence_chart" class="chart"></div>
+                </div>
+            </div>
+            <div class="chart-row">
+                <div class="chart-container">
+                    <h3>参保类型费用对比</h3>
+                    <div id="insurance_type_chart" class="chart"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 医疗大数据与脑肿瘤影像智能检测系统</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

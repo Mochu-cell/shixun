@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+<head>
+    <meta charset='UTF-8'>
+    <title>脑肿瘤影像数据分析报告</title>
+    <style>
+        body { font-family: 'Microsoft YaHei', sans-serif; max-width: 1000px; margin: 0 auto; padding: 20px; }
+        h1 { color: #333; border-bottom: 2px solid #4ECDC4; padding-bottom: 10px; }
+        h2 { color: #555; margin-top: 30px; }
+        table { border-collapse: collapse; width: 100%; margin: 15px 0; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #4ECDC4; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        .highlight { background-color: #FFE66D; padding: 10px; border-radius: 5px; margin: 10px 0; }
+        code { background-color: #f4f4f4; padding: 2px 5px; border-radius: 3px; }
+    </style>
+</head>
+<body>
+<h1>脑肿瘤影像数据分析报告</h1>
+<p>生成时间: 2026-07-05 09:49:58</p>
+<h2>1. 数据概览</h2>
+<p><strong>总图像数量</strong>: 69 张</p>
+<p><strong>类别数量</strong>: 3 类</p>
+<h3>各类别数量分布</h3>
+<table>
+    <tr><th>类别</th><th>英文名称</th><th>数量</th><th>占比</th></tr>
+    <tr><td>胶质瘤</td><td>glioma</td><td>13</td><td>18.8%</td></tr>
+    <tr><td>脑膜瘤</td><td>meningioma</td><td>23</td><td>33.3%</td></tr>
+    <tr><td>垂体瘤</td><td>pituitary</td><td>33</td><td>47.8%</td></tr>
+</table>
+<h2>2. 图像尺寸分析</h2>
+<p><strong>宽度范围</strong>: 256 - 900 像素</p>
+<p><strong>高度范围</strong>: 256 - 741 像素</p>
+<p><strong>平均宽度</strong>: 480.5 像素</p>
+<p><strong>平均高度</strong>: 478.2 像素</p>
+<h2>3. 肿瘤面积分析</h2>
+<p><strong>平均相对面积</strong>: 0.1966</p>
+<p><strong>面积标准差</strong>: 0.3201</p>
+<h3>各类别平均面积</h3>
+<table>
+    <tr><th>类别</th><th>平均相对面积</th><th>标准差</th></tr>
+    <tr><td>胶质瘤</td><td>0.2529</td><td>0.3993</td></tr>
+    <tr><td>脑膜瘤</td><td>0.2193</td><td>0.3166</td></tr>
+    <tr><td>垂体瘤</td><td>0.1587</td><td>0.2802</td></tr>
+</table>
+<h2>4. 结论与建议</h2>
+<div class='highlight'>
+<h3>主要发现</h3>
+<p><strong>类别不平衡</strong>: 最大类别与最小类别的比例为 2.54:1，建议进行数据增强</p>
+<p><strong>面积分布</strong>: 肿瘤平均相对面积为 0.1966，存在一定变异</p>
+<h3>后续工作建议</h3>
+<ol>
+    <li>进行数据增强以平衡类别分布</li>
+    <li>使用YOLO模型进行目标检测训练</li>
+    <li>评估模型在不同类别上的检测性能</li>
+</ol>
+</div>
+</body>
+</html>
