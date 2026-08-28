@@ -27,7 +27,7 @@ COMMENT 'DM层-汇总数据层，聚合统计表'
 LOCATION '/user/hive/warehouse/dm.db';
 "
 
-hive -f sql/hive_dm_ddl.sql
+hive -f sql/hive/hive_dm_ddl.sql
 
 echo "  ✅ DM层表创建完成"
 
@@ -42,7 +42,7 @@ spark-sql \
     --conf spark.sql.shuffle.partitions=8 \
     --conf spark.hadoop.hive.exec.dynamic.partition=true \
     --conf spark.hadoop.hive.exec.dynamic.partition.mode=nonstrict \
-    -f hql/etl_dwd_to_dm.hql
+    -f sql/hql/etl_dwd_to_dm.hql
 
 echo "  ✅ DWD→DM ETL完成"
 
@@ -69,7 +69,7 @@ echo "[Step 4] 执行Spark SQL聚合分析..."
 spark-sql \
     --hivevar etl_date=$ETL_DATE \
     --conf spark.sql.shuffle.partitions=8 \
-    -f hql/spark_analysis.hql
+    -f sql/hql/spark_analysis.hql
 
 END_TIME=$(date +%s)
 echo ""

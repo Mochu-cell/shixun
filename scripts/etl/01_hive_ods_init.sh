@@ -58,7 +58,7 @@ COMMENT 'ODS层-原始数据层，与CSV 1:1映射'
 LOCATION '/user/hive/warehouse/ods.db';
 "
 
-hive -f sql/hive_ods_ddl.sql
+hive -f sql/hive/hive_ods_ddl.sql
 
 echo "  ✅ ODS层表创建完成"
 

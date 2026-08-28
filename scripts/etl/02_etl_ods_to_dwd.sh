@@ -27,7 +27,7 @@ COMMENT 'DWD层-明细数据层，三表关联宽表'
 LOCATION '/user/hive/warehouse/dwd.db';
 "
 
-hive -f sql/hive_dwd_ddl.sql
+hive -f sql/hive/hive_dwd_ddl.sql
 
 echo "  ✅ DWD层表创建完成"
 
@@ -43,7 +43,7 @@ spark-sql \
     --conf spark.sql.shuffle.partitions=8 \
     --conf spark.hadoop.hive.exec.dynamic.partition=true \
     --conf spark.hadoop.hive.exec.dynamic.partition.mode=nonstrict \
-    -f hql/etl_ods_to_dwd.hql
+    -f sql/hql/etl_ods_to_dwd.hql
 
 ETL_END=$(date +%s)
 echo "  ✅ ODS→DWD ETL完成 (耗时: $((ETL_END - START_TIME))秒)"
